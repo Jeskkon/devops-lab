@@ -1,8 +1,6 @@
 - name: install gitea
-  hosts: {{hosts}}
-
+  hosts: gitea
+  become: true
   roles:
-    - create-new-user
-    - ssh-config
     - docker
     - gitea

@@ -1,0 +1,7 @@
+- name: monitoring setup
+  hosts: monitoring
+  become: true
+  roles:
+    - docker
+    - grafana
+    - prometheus

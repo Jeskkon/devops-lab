@@ -1,0 +1,13 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for firewall
+- name: firewall present
+  ansible.builtin.apt:
+    name: firewalld
+    state: present
+
+- name: firewalld service
+  ansible.builtin.systemd:
+    name: firewalld
+    state: started
+    enable: true

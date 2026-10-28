@@ -1,13 +1,18 @@
-#SPDX-License-Identifier: MIT-0
----
-# tasks file for firewall
-- name: firewall present
+- name: install firewalld
   ansible.builtin.apt:
     name: firewalld
     state: present
+    update_cache: true
 
-- name: firewalld service
-  ansible.builtin.systemd:
+- name: start firewalld
+  ansible.builtin.systemd_service:
     name: firewalld
     state: started
-    enable: true
+    enabled: true
+
+- name: open SSH port
+  ansible.posix.firewalld:
+    service: ssh
+    permanent: true
+    state: enabled
+    immediate: true

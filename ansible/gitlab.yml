@@ -1,0 +1,6 @@
+- name: install gitea
+  hosts: gitea
+  become: true
+  roles:
+    - docker
+    - gitea

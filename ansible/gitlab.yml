@@ -1,6 +1,6 @@
 - name: install gitea
-  hosts: gitea
+  hosts: gitlab
   become: true
   roles:
     - docker
-    - gitea
+    - gitlab

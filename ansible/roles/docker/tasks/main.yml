@@ -1,3 +1,29 @@
-#SPDX-License-Identifier: MIT-0
----
-# tasks file for docker
+- name: create gpg key directory
+  ansible.builtin.file:
+    path: /etc/apt/keyrings
+    state: directory
+    mode: '0755'
+
+- name: get docker gpg key
+  ansible.builtin.url_get:
+    url: https://download.docker.com/linux/debian/gpg
+    dest: /etc/apt/keyrings/docker.asc
+    mode: '0644'
+
+- name: add docker repo
+  ansible.builtin.template:
+    src: docker.sources.j2
+    dest: /etc/apt/sources.list.d/docker.sources
+    mode: '644'
+
+- name: update apt cache
+  ansible.builtin.apt:
+    name: {{docker-tools}}
+    state: present
+    update_cache: true
+
+- name: start and enable docker service
+  ansible.builtin.systemd_service:
+    name: docker
+    state: started
+    enabled: true

@@ -1,4 +1,4 @@
-- name: install gitea
+- name: install gitlab
   hosts: gitlab
   become: true
   roles:

@@ -5,7 +5,7 @@
     mode: '0755'
 
 - name: get docker gpg key
-  ansible.builtin.url_get:
+  ansible.builtin.get_url:
     url: https://download.docker.com/linux/debian/gpg
     dest: /etc/apt/keyrings/docker.asc
     mode: '0644'
@@ -16,9 +16,9 @@
     dest: /etc/apt/sources.list.d/docker.sources
     mode: '644'
 
-- name: update apt cache
+- name: install docker
   ansible.builtin.apt:
-    name: {{docker-tools}}
+    name: "{{docker_tools}}"
     state: present
     update_cache: true
 

@@ -1,6 +1,6 @@
 Types: deb
 URIs: https://download.docker.com/linux/debian
-Suites: $(. /etc/os-release && echo "$VERSION_CODENAME")
+Suites: {{ ansible_facts['distribution_release'] }}
 Components: stable
-Architectures: $(dpkg --print-architecture)
+Architectures: {{ arch_map[ansible_facts['architecture']] }}
 Signed-By: /etc/apt/keyrings/docker.asc

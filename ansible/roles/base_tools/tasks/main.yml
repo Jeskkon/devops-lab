@@ -1,6 +1,6 @@
 - name: install base tools
   ansible.builtin.apt:
-    name: {{base-packages}}
+    name: {{base_tools}}
     state: present
     update_cache: true
     cache_valid_time: 3600

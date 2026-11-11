@@ -1,0 +1,4 @@
+base_tools:
+  - wget
+  - curl
+  - ca-certificates

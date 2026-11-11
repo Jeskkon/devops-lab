@@ -1,0 +1,1 @@
+This repository contains my notes on devops. I’ll be glad if they be useful to anyone.
